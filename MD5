@@ -1,0 +1,14 @@
+c068586f49f0d19c42ec1ea7c6554149 *DESCRIPTION
+910e8963306259d82efb50814c66e240 *NAMESPACE
+812178446f97e70ae31ab9142f30f01d *R/HextractoR.R
+114ba0c785b6f33b6aab785bbfc9ead7 *R/execBlast.R
+3f4ef2d0e45722b5fad11437f203db1a *R/extractStems.R
+207017d04e5c4bec15c10eec938c562c *R/foldSequences.R
+7c441809bf8cc4ea30e014d05f2fe289 *R/separateSequences.R
+740b69e8fcadf6ed5c794a8d19371258 *R/splitFasta.R
+fee76baadaa61e76ddaf52e74e451e32 *R/uniqueSequences.R
+5f2f7a84ad9023dd13f931963e85f481 *R/windowSequence.R
+8a01cffb8c9def5f4130fc7e45a36051 *inst/Example_human.fasta
+a419417f7c0148de6d2aaf273c3abc81 *inst/Example_pre-miRNA.fasta
+67b78a10cac71265fdf738185f2a57c5 *inst/Example_tiny.fasta
+92111c409bc06bb718667db815a67def *man/HextractoR.Rd
