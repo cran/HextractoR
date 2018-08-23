@@ -1,4 +1,4 @@
-#' MiRNAss: Genome-wide pre-miRNA discovery from few labeled examples
+#' HextractoR: Integrated Tool for Hairping Extraction of RNA Sequences
 #'
 #' To preprocess a genome, you must first write a config file in YAML where you
 #' can specify some parameters of the process. You can use one of the templates
@@ -31,6 +31,7 @@
 #' proccessing of each sequence (if it was succesful or failed)
 #' @examples
 #' # Small example without filter files
+#' library(HextractoR)
 #' # First we get the path of the example FASTA file
 #' fpath <- system.file("Example_tiny.fasta", package="HextractoR")
 #' # To run HextractoR, simply call the main function
@@ -103,9 +104,13 @@ HextractoR <- function(input_file,
 checkRequeriments <- function() {
 	rnafold <- system('RNAfold --version', ignore.stdout = T, ignore.stderr = T)
 	blast <- system('formatdb --help', ignore.stdout = T, ignore.stderr = T)
-	if(rnafold == 127)
-		cat("RNAfold not installed.\n Download from https://www.tbi.univie.ac.at/RNA/\n")
-	if(blast  == 127)
-		cat("BLAST not installed.\n Download from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/\n")
+	if(rnafold == 127) {
+		cat("RNAfold not installed. Download from:\n")
+		cat("https://www.tbi.univie.ac.at/RNA/\n")
+	}
+	if(blast  == 127) {
+		cat("BLAST not installed. Download from:\n")
+		cat("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/\n")
+	}
 	return(blast != 127 && rnafold != 127)
 }

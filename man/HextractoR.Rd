@@ -2,13 +2,12 @@
 % Please edit documentation in R/HextractoR.R
 \name{HextractoR}
 \alias{HextractoR}
-\title{MiRNAss: Genome-wide pre-miRNA discovery from few labeled examples}
+\title{HextractoR: Integrated Tool for Hairping Extraction of RNA Sequences}
 \usage{
 HextractoR(input_file, min_valid_nucleotides = 500, window_size = 160,
   window_step = 30, only_sloop = T, min_length = 60, min_bp = 16,
   trim_sequences = F, margin_bp = 6, blast_evalue = 1,
-  identity_threshold = 90, nthreads = 1, nworks = 1,
-  filter_files = { })
+  identity_threshold = 90, nthreads = 1, nworks = 1, filter_files = { })
 }
 \arguments{
 \item{input_file}{filename of the fasta file to proccess}
@@ -60,6 +59,7 @@ function creates 2 files in the "out" folder and automatically names them.
 }
 \examples{
 # Small example without filter files
+library(HextractoR)
 # First we get the path of the example FASTA file
 fpath <- system.file("Example_tiny.fasta", package="HextractoR")
 # To run HextractoR, simply call the main function
