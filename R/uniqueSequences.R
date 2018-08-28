@@ -32,9 +32,9 @@ uniqueSequences <- function(files, nworks) {
 	for(i in 1:length(fseqs))
 		sname[i] <- attr(fseqs[[i]], 'name')
 	n3 <- length(fseqs)
-	files <- tempfile()
-	write.fasta(file.out = files, sequences = fseqs, names = sname)
+	filename <- tempfile()
+	write.fasta(sequences = fseqs, names = sname, as.string = T, file.out = filename)
 	cat('   - Deleted sequences: ', n1, ' -> ', n2, ' -> ', n3, '\n')
 	cat('   - Elapsed time: ', Sys.time() - tstart, ' sec\n')
-	return(files)
+	return(filename)
 }

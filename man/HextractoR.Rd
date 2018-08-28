@@ -45,17 +45,13 @@ sequences from the filter files.}
 stems.}
 }
 \value{
-a list with the path of the output files and the result of the
+A list with the path of the output files and the result of the
 proccessing of each sequence (if it was succesful or failed)
 }
 \description{
-To preprocess a genome, you must first write a config file in YAML where you
-can specify some parameters of the process. You can use one of the templates
-included in the folder "config". The parameters as defined in the sample
-configuration file works well in most of the cases.  Then you need a file
-containing the raw genome in fasta format. In the input folder there is a
-portion of the human genome. To run HExtractor, call the main function: This
-function creates 2 files in the "out" folder and automatically names them.
+To preprocess a genome, you need a file containing the raw genome in fasta
+format. To run HExtractor, simply call the main function. This function
+creates 2 files in the "out" folder and automatically names them.
 }
 \examples{
 # Small example without filter files

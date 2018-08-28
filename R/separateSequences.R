@@ -21,7 +21,7 @@ separateSequences  <- function(in.file, filter_files, identity_threshold) {
 		headers[i] = readLines(con = fid.in, n = 1)
 	}
 	label = rep(1, numItems)
-	if(length(filter_files) > 0) { 
+	if(length(filter_files) > 0) {
 		for(i in 1:length(filter_files)) {
 			d <- tryCatch(read.table(filter_files[i], sep = '\t', header = F),
 				      error = function(e) data.frame(),
@@ -58,7 +58,7 @@ separateSequences  <- function(in.file, filter_files, identity_threshold) {
 				chunk <- readChar(fid.in, nchars = chunkEnd - chunkStart)
 			} else
 				chunk <- readChar(fid.in, nchars = 1e6)
-			writeChar(chunk, con=fid.out)
+			writeChar(chunk, con=fid.out, eos=NULL)
 		}
 		close(fid.out)
 	}

@@ -1,12 +1,8 @@
 #' HextractoR: Integrated Tool for Hairping Extraction of RNA Sequences
 #'
-#' To preprocess a genome, you must first write a config file in YAML where you
-#' can specify some parameters of the process. You can use one of the templates
-#' included in the folder "config". The parameters as defined in the sample
-#' configuration file works well in most of the cases.  Then you need a file
-#' containing the raw genome in fasta format. In the input folder there is a
-#' portion of the human genome. To run HExtractor, call the main function: This
-#' function creates 2 files in the "out" folder and automatically names them.
+#' To preprocess a genome, you need a file containing the raw genome in fasta
+#' format. To run HExtractor, simply call the main function. This function
+#' creates 2 files in the "out" folder and automatically names them.
 #' @param input_file filename of the fasta file to proccess
 #' @param window_size Number of bases in the windows.
 #' @param window_step Window step. This number defines indirectly the overlap:
@@ -27,7 +23,7 @@
 #' @param nworks Split each sequence in nworks to use less RAM memory.
 #' @param filter_files Fasta files with known sequences to separate the output
 #' stems.
-#' @return a list with the path of the output files and the result of the
+#' @return A list with the path of the output files and the result of the
 #' proccessing of each sequence (if it was succesful or failed)
 #' @examples
 #' # Small example without filter files
