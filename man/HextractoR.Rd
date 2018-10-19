@@ -7,7 +7,8 @@
 HextractoR(input_file, min_valid_nucleotides = 500, window_size = 160,
   window_step = 30, only_sloop = T, min_length = 60, min_bp = 16,
   trim_sequences = F, margin_bp = 6, blast_evalue = 1,
-  identity_threshold = 90, nthreads = 1, nworks = 1, filter_files = { })
+  identity_threshold = 90, nthreads = 1, nworks = 1,
+  filter_files = { })
 }
 \arguments{
 \item{input_file}{filename of the fasta file to proccess}

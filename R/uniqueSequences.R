@@ -11,23 +11,26 @@ uniqueSequences <- function(files, nworks) {
 	n1 <- sum(nvector)
 	fseqs <- unique(fseqs)
 	n2 <- length(fseqs)
-	uni <- rep(T, length(fseqs))
-	for (i in 11:(length(uni)-11)) {
-		if (!uni[i]) next
-		atom <- fseqs[[i]]
-		atom <- substr(atom, floor(nchar(atom)/2-10), ceiling(nchar(atom)/2+10))
-		for (j in (i-10):(i+10)) {
-			if (i==j || !uni[j]) next
-			rgx <- regexpr(text = fseqs[[j]], pattern = atom)
-			if (rgx > 10 && rgx < nchar(fseqs[[j]])-10){
-				if (nchar(fseqs[[i]]) > nchar(fseqs[[j]]))
-					uni[j] <- F
-				else
-					uni[i] <- F
+	if(n2 > 1) {
+		uni <- rep(T, n2)
+		for (i in 1:n2) {
+			if (!uni[i]) next
+			atom <- fseqs[[i]]
+			atom <- substr(atom, floor(nchar(atom)/2-10), ceiling(nchar(atom)/2+10))
+			neig <- max(1, i-10):min(n2, i+10)
+			for (j in neig) {
+				if (i==j || !uni[j]) next
+				rgx <- regexpr(text = fseqs[[j]], pattern = atom)
+				if (rgx > 10 && rgx < nchar(fseqs[[j]])-10){
+					if (nchar(fseqs[[i]]) > nchar(fseqs[[j]]))
+						uni[j] <- F
+					else
+						uni[i] <- F
+				}
 			}
 		}
+		fseqs <- fseqs[uni]
 	}
-	fseqs <- fseqs[uni]
 	sname <- rep("", length(fseqs))
 	for(i in 1:length(fseqs))
 		sname[i] <- attr(fseqs[[i]], 'name')

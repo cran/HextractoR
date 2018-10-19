@@ -1,4 +1,4 @@
-e2df542a7fece8ad60a4a0ee2a7f315e *DESCRIPTION
+2b4c2fd085a24487b485751b379d93b1 *DESCRIPTION
 910e8963306259d82efb50814c66e240 *NAMESPACE
 ee3d946c6816446e2b2c77025ff911ce *R/HextractoR.R
 114ba0c785b6f33b6aab785bbfc9ead7 *R/execBlast.R
@@ -6,10 +6,10 @@ ee3d946c6816446e2b2c77025ff911ce *R/HextractoR.R
 207017d04e5c4bec15c10eec938c562c *R/foldSequences.R
 fee856f291d0a8f81b214bd0e8fe85af *R/separateSequences.R
 740b69e8fcadf6ed5c794a8d19371258 *R/splitFasta.R
-b7fbf44c9981e8453a0610f353662c68 *R/uniqueSequences.R
+a28d86723968e87b5125070db25c3588 *R/uniqueSequences.R
 5f2f7a84ad9023dd13f931963e85f481 *R/windowSequence.R
 a5c8e2333bc4015d438a97220c1fbf4c *README
 8a01cffb8c9def5f4130fc7e45a36051 *inst/Example_human.fasta
 a419417f7c0148de6d2aaf273c3abc81 *inst/Example_pre-miRNA.fasta
 a61440006d4fec95a268c7e0839e7896 *inst/Example_tiny.fasta
-b7927dd4018b05296956d2751dc93e8e *man/HextractoR.Rd
+b2af7c94253441570739abc01cfcae53 *man/HextractoR.Rd
