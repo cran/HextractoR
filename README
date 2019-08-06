@@ -1,9 +1,10 @@
-This is the version 1.1 of the HextractoR toolbox
-------------------------------------------------- Simple and integrated tool
-that automatically extracts and folds all hairpin sequences from raw genome-wide
-data. It predicts the secondary structure of several overlapped segments, with
-longer length than the mean length of sequences of interest for the species
-under processing, ensuring that no one is lost nor inappropriately cut.
+This is the version 1.4 of the HextractoR toolbox
+-------------------------------------------------
+Simple and integrated tool that automatically extracts and folds all hairpin
+sequences from raw genome-wide data. It predicts the secondary structure of
+several overlapped segments, with longer length than the mean length of
+sequences of interest for the species under processing, ensuring that no one is
+lost nor inappropriately cut.
 
 The last version can be found at:
 http://sourceforge.net/projects/sourcesinc/files/HextractoR/
@@ -14,16 +15,16 @@ Contact
 
 Installation
 ------------
+HextractoR was tested in R > 3.4, but it probably work in older versions as well.
 For folding and alignment of sequences the toolbox uses some external well-known
-packages.  The following software must be installed:
+packages. The following software must be installed:
 
 - Vienna RNA: this package is used to fold sequences and alignments.
-  Download: https://www.tbi.univie.ac.at/RNA/ Tested version: 2.1.8
+  Download: https://www.tbi.univie.ac.at/RNA/
 
 - NCBI blast+: this package is used to identify the known miRNAs and the
   sequence to discard.
-  Download: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/
-  Tested version: 2.2.26
+  Download: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 
 To install the R package simply execute from R:
 

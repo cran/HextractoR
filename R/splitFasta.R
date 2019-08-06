@@ -1,5 +1,5 @@
 splitFasta <- function(filename) {
-	fid <- file(filename, 'r')
+	fid <- file(filename, 'rb')
 	blockSize <- 2^24
 	hNdx <- {}
 	pos <- 0

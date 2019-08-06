@@ -52,12 +52,12 @@ HextractoR <- function(input_file,
 		       only_sloop = T,
 		       min_length = 60,
 		       min_bp = 16,
-		       trim_sequences = F,
+		       trim_sequences = T,
 		       margin_bp = 6,
 		       blast_evalue = 1,
 		       identity_threshold = 90,
-		       nthreads = 1,
-		       nworks = 1,
+		       nthreads = 4,
+		       nworks = 4,
 		       filter_files = {}) {
 	if(!checkRequeriments())
 		return()
@@ -93,6 +93,7 @@ HextractoR <- function(input_file,
 				  nthreads = nthreads)
 	files <- separateSequences(files, filter_files = filter_files,
 				   identity_threshold = identity_threshold)
+	stopCluster(workers)
 	return(list(result_files = files, error.log = error.log))
 }
 
@@ -101,12 +102,12 @@ checkRequeriments <- function() {
 	rnafold <- system('RNAfold --version', ignore.stdout = T, ignore.stderr = T)
 	blast <- system('formatdb --help', ignore.stdout = T, ignore.stderr = T)
 	if(rnafold == 127) {
-		cat("RNAfold not installed. Download from:\n")
+		cat("RNAfold not installed. Download the last version from:\n")
 		cat("https://www.tbi.univie.ac.at/RNA/\n")
 	}
 	if(blast  == 127) {
-		cat("BLAST not installed. Download from:\n")
-		cat("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/\n")
+		cat("BLAST not installed. Download the last version from:\n")
+		cat("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/\n")
 	}
 	return(blast != 127 && rnafold != 127)
 }

@@ -4,7 +4,8 @@ execBlast  <- function(seq_file, filter_files, blast_evalue, nthreads) {
 		return(filter_files)
 	cat('Executing blast...\n')
 	tstart = Sys.time()
-	cmd <- paste0('formatdb -i ', seq_file, ' -p F > /dev/null')
+	cmd <- paste0('makeblastdb -max_file_sz 2GB -in ', seq_file,
+		      ' -dbtype nucl > /dev/null')
 	system(cmd)
 	for(i in 1:length(filter_files)) {
 		ffile <- filter_files[i]
@@ -14,11 +15,11 @@ execBlast  <- function(seq_file, filter_files, blast_evalue, nthreads) {
 			ffile = uncompressedFile$Name[1]
 		}
 		filter_files[i] <- tempfile()
-		cmd <- paste0('blastall -p blastn -i ', ffile,
-			      ' -F F -d ', seq_file,
-			      ' -S 1 -e ', blast_evalue,
-			      ' -a ', nthreads,
-			      ' -m 8 -o ', filter_files[i])
+		cmd <- paste0('blastn -query ', ffile,
+			      ' -outfmt 10 -db ', seq_file,
+			      ' -strand plus -evalue ', blast_evalue,
+			      ' -num_threads ', nthreads,
+			      ' -out ', filter_files[i])
 		system(cmd)
 		for(uf in uncompressedFile)
 			file.remove(uf)

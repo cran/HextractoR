@@ -1,7 +1,7 @@
 separateSequences  <- function(in.file, filter_files, identity_threshold) {
 	cat('Separating sequences according to the filter files...\n')
 	tstart <- Sys.time()
-	fid.in <- file(in.file,'rt')
+	fid.in <- file(in.file,'rb')
 	blockSize = 2^24
 	hNdx <- {}
 	pos <- 0
@@ -23,7 +23,7 @@ separateSequences  <- function(in.file, filter_files, identity_threshold) {
 	label = rep(1, numItems)
 	if(length(filter_files) > 0) {
 		for(i in 1:length(filter_files)) {
-			d <- tryCatch(read.table(filter_files[i], sep = '\t', header = F),
+			d <- tryCatch(read.table(filter_files[i], sep = ',', header = F),
 				      error = function(e) data.frame(),
 				      finally = function(e) data.frame())
 			if(nrow(d) > 0) {
@@ -39,13 +39,13 @@ separateSequences  <- function(in.file, filter_files, identity_threshold) {
 		fid.out <- NA
 		if(i == 1) {
 			filename <- paste0(tstamp, '_filtered-unlabeled.fasta')
-			fid.out <- file(filename, 'wt')
+			fid.out <- file(filename, 'wb')
 			cat('   -  unlabeled: ', sum(label == 1), '\n')
 		} else {
 			filename <- basename(filter_files[[i]])
 			filename <- substr(filename, 1, nchar(filename)-4)
 			filename <- paste0(tstamp, '_filtered-', filename, '.fasta')
-			fid.out <- file(filename, 'wt')
+			fid.out <- file(filename, 'wb')
 			cat('   -  ', filename, ': ', sum(label==i))
 		}
 		out.files <- c(out.files, filename)

@@ -59,7 +59,8 @@ proccessWindow <- function(rfo, min_length, min_bp, margin, trim_sequences) {
 			sseq <- substr(rfo$seq, idx$b[j], idx$e[j])
 			if (trim_sequences) {
 				spar <- rfo$par[idx$b[j]:idx$e[j]] - idx$b[j] + 1
-				sseq <- trimSequence(sseq, sstr, spar, min_bp, margin)
+				sseq <- tryCatch({trimSequence(sseq, sstr, spar, min_bp, margin)},
+						 error=function(cond) {return(sseq)})
 			}
 			sname <- attr(rfo$seq,'name')
 			reg[j,'name'] <- gsub(pattern = ' ', replacement = '_', x = sname)
@@ -80,8 +81,8 @@ proccessWindow <- function(rfo, min_length, min_bp, margin, trim_sequences) {
 
 trimSequence <- function(sseq, sstr, spar, minbp, margin){
 	if (tail(gregexpr('\\(', sstr)[[1]], n=1) > gregexpr('\\)', sstr)[[1]][1])
-		return
-	auxpr = regexpr('\\(\\.*\\)', sstr)[[1]]
+		return(sseq)
+	auxpr = regexpr('\\(\\.*\\)', sstr)
 	mid <-  auxpr[1] + round( attr(auxpr, 'match.length') / 2 )
 	flen <- rep(0, nchar(sseq))
 	dst <- 0
